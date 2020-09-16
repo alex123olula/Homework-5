@@ -1,0 +1,69 @@
+<div class="container">
+    <form (ngSubmit)="onSubmitPokemon($event)" [formGroup]="pokemonForm" novalidate>
+        <mat-form-field>
+            <input formControlName="name"
+                   id="name"
+                   matInput
+                   placeholder="Name"
+                   type="text">
+            <mat-hint align="end">Not more then 12 characters long</mat-hint>
+            <mat-error *ngIf="hasError('name', 'required')">Name is required</mat-error>
+            <mat-error *ngIf="hasError('name', 'maxlength')">You have more than 12 characters</mat-error>
+            <mat-error *ngIf="hasError('name', 'minlength')">You have les than 3 characters</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+            <input formControlName="height"
+                   id="height"
+                   matInput
+                   placeholder="Height"
+                   type="text">
+            <mat-hint align="end">Please enter a number</mat-hint>
+            <mat-error *ngIf="hasError('height', 'required')">Height is required</mat-error>
+            <mat-error *ngIf="hasError('height', 'pattern')">Height is a number</mat-error>
+
+        </mat-form-field>
+        <mat-form-field>
+            <input formControlName="weight" id="weight" matInput placeholder="Weight" type="text">
+            <mat-hint align="end">Please enter a number</mat-hint>
+            <mat-error *ngIf="hasError('weight', 'required')">Weight is required</mat-error>
+            <mat-error *ngIf="hasError('weight', 'pattern')">Weight is a number</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+            <input formControlName="image" id="image" matInput placeholder="Link to img" type="text">
+            <mat-hint align="end">Please enter a valid link</mat-hint>
+            <mat-error *ngIf="hasError('image', 'required')">Link is required</mat-error>
+            <mat-error *ngIf="hasError('image', 'pattern')">This link is invalid</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-chip-list #ability>
+                <mat-chip (removed)="removeAbility(i)" *ngFor="let ability of getAbilities.controls ; let i = index;"
+                          [removable]="removable" [selectable]="selectable">
+                    {{ability.value }}
+                    <mat-icon *ngIf="removable" matChipRemove>cancel</mat-icon>
+                </mat-chip>
+                <input (matChipInputTokenEnd)="addAbility($event)"
+                       [matChipInputAddOnBlur]="addOnBlur"
+                       [matChipInputFor]="ability"
+                       [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                       placeholder="New Ability"/>
+                <mat-error *ngIf="hasError('abilities', 'required')">At least one is required</mat-error>
+            </mat-chip-list>
+        </mat-form-field>
+
+        <button (click)="close()"
+                color="warn"
+                mat-button
+                type="button">
+            Cancel
+        </button>
+        <button (click)="onSAveForm();
+                onSubmitPokemon($event) "
+                [disabled]="pokemonForm.invalid"
+                color="primary"
+                mat-button
+                type="submit">
+            Save
+        </button>
+
+    </form>
+</div>

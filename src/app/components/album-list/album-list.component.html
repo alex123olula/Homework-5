@@ -1,0 +1,50 @@
+<div class="flex">
+    <h1>Albums</h1>
+    <button (click)="newAlbum()" color="accent" mat-flat-button>
+        New
+        <mat-icon>save</mat-icon>
+    </button>
+</div>
+<table [dataSource]="dataSource" class="mat-elevation-z8" mat-table matSort>
+
+    <!-- Position Column -->
+    <ng-container matColumnDef="name">
+        <th *matHeaderCellDef mat-header-cell mat-sort-header>Name</th>
+        <td *matCellDef="let element" mat-cell> {{element.name}} </td>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="band">
+        <th *matHeaderCellDef mat-header-cell> Band</th>
+        <td *matCellDef="let element" mat-cell> {{element.band}} </td>
+    </ng-container>
+
+    <!-- Weight Column -->
+    <ng-container matColumnDef="genre">
+        <th *matHeaderCellDef mat-header-cell> Genre</th>
+        <td *matCellDef="let element" mat-cell> {{element.genre}} </td>
+    </ng-container>
+
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="label">
+        <th *matHeaderCellDef mat-header-cell> Label</th>
+        <td *matCellDef="let element" mat-cell> {{element.label}} </td>
+    </ng-container>
+    <ng-container matColumnDef="producer">
+        <th *matHeaderCellDef mat-header-cell> Producer</th>
+        <td *matCellDef="let element" mat-cell> {{element.producer}} </td>
+    </ng-container>
+
+    <tr *matHeaderRowDef="displayedColumns" mat-header-row></tr>
+    <tr *matRowDef="let row; columns: displayedColumns;" mat-row></tr>
+
+    <ng-container matColumnDef="actions">
+        <th *matHeaderCellDef mat-header-cell>Actions</th>
+        <td *matCellDef="let element" mat-cell>
+            <mat-icon (click)="onEdit(element)" color="primary">edit</mat-icon>
+            <mat-icon (click)="onDelete(element.id)" color="warn">delete</mat-icon>
+        </td>
+    </ng-container>
+
+
+</table>

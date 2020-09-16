@@ -1,0 +1,49 @@
+<div class="container">
+    <div class="filter">
+        <mat-form-field>
+            <mat-label>Filter</mat-label>
+            <input #input (keyup)="applyFilter($event)" matInput>
+        </mat-form-field>
+    </div>
+    <table [dataSource]="dataSource" class="mat-elevation-z8" mat-table matSort>
+        <ng-container matColumnDef="name">
+            <th *matHeaderCellDef mat-header-cell mat-sort-header>name</th>
+            <td *matCellDef="let element" mat-cell> {{element.name}} </td>
+        </ng-container>
+        <ng-container matColumnDef="image">
+            <th *matHeaderCellDef mat-header-cell> Image</th>
+            <td *matCellDef="let element" mat-cell>
+                <img alt="pokemon" height="100" src="{{element.image}}" width="100">
+            </td>
+        </ng-container>
+        <ng-container matColumnDef="abilities">
+            <th *matHeaderCellDef mat-header-cell mat-sort-header>abilities</th>
+            <td *matCellDef="let element" mat-cell>
+                {{element.abilities }}
+            </td>
+        </ng-container>
+        <ng-container matColumnDef="weight">
+            <th *matHeaderCellDef mat-header-cell mat-sort-header>weight</th>
+            <td *matCellDef="let element" mat-cell> {{element.weight}} </td>
+        </ng-container>
+        <ng-container matColumnDef="height">
+            <th *matHeaderCellDef mat-header-cell mat-sort-header>height</th>
+            <td *matCellDef="let element" mat-cell> {{element.height}} </td>
+        </ng-container>
+        <tr *matHeaderRowDef="displayedColumns" mat-header-row></tr>
+        <tr *matRowDef="let row; columns: displayedColumns;" mat-row></tr>
+
+        <ng-container matColumnDef="actions">
+            <th *matHeaderCellDef mat-header-cell>Actions</th>
+            <td *matCellDef="let element" mat-cell>
+                <mat-icon (click)="onEdit(element)" color="primary">edit</mat-icon>
+                <mat-icon (click)="onDelete(element.id)" color="accent">delete</mat-icon>
+                <mat-icon (click)="newPokemon()" color="accent">add_box</mat-icon>
+            </td>
+        </ng-container>
+        <tr *matNoDataRow class="mat-row">
+            <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
+        </tr>
+    </table>
+    <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+</div>

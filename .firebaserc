@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "homework-5-47019": {
+      "hosting": {
+        "homework5": [
+          "homework-5-47019"
+        ]
+      }
+    }
+  }
+}

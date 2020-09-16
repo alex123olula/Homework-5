@@ -1,0 +1,89 @@
+<div class="container">
+    <form (ngSubmit)="onSubmit($event)" [formGroup]="form" novalidate>
+
+        <mat-form-field>
+            <input formControlName="name"
+                   id="name"
+                   matInput
+                   placeholder="Name"
+                   type="text">
+            <mat-hint align="end">Not more then 30 characters long</mat-hint>
+            <mat-error *ngIf="hasError('name', 'required')">Name is required</mat-error>
+            <mat-error *ngIf="hasError('name', 'maxlength')">You have more than 30 characters</mat-error>
+            <mat-error *ngIf="hasError('name', 'minlength')">You have les than 3 characters</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+            <input
+                formControlName="band"
+                id="band"
+                matInput
+                placeholder="Band"
+                type="text">
+            <mat-hint align="end">Not more then 30 characters long</mat-hint>
+            <mat-error *ngIf="hasError('band', 'required')">Band is required</mat-error>
+            <mat-error *ngIf="hasError('band', 'maxlength')">You have more than 20 characters</mat-error>
+            <mat-error *ngIf="hasError('band', 'minlength')">You have les than 3 characters</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-chip-list #label>
+                <mat-chip (removed)="removeLabel(i)" *ngFor="let labels of getLabel.controls; let i = index;"
+                          [removable]="removable" [selectable]="selectable">
+                    {{labels.value}}
+                    <mat-icon *ngIf="removable" matChipRemove>cancel</mat-icon>
+                </mat-chip>
+                <input (matChipInputTokenEnd)="addLabel($event)"
+                       [matChipInputAddOnBlur]="addOnBlur"
+                       [matChipInputFor]="label"
+                       [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                       placeholder="New Label"/>
+                <mat-error *ngIf="hasError('label', 'required')">At least one is required</mat-error>
+
+            </mat-chip-list>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-chip-list #genre>
+                <mat-chip (removed)="removeGenre(i)" *ngFor="let genre of getGenre.controls; let i = index;"
+                          [removable]="removable" [selectable]="selectable">
+                    {{genre.value}}
+                    <mat-icon *ngIf="removable" matChipRemove>cancel</mat-icon>
+                </mat-chip>
+                <input (matChipInputTokenEnd)="addGenre($event)"
+                       [matChipInputAddOnBlur]="addOnBlur"
+                       [matChipInputFor]="genre"
+                       [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                       placeholder="New Genre"
+                />
+                <mat-error *ngIf="hasError('genre', 'required')">At least one is required</mat-error>
+            </mat-chip-list>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-chip-list #producer>
+                <mat-chip (removed)="removeProducer(i)" *ngFor="let producer of getProducer.controls; let i = index;"
+                          [removable]="removable" [selectable]="selectable">
+                    {{producer.value}}
+                    <mat-icon *ngIf="removable" matChipRemove>cancel</mat-icon>
+                </mat-chip>
+                <input (matChipInputTokenEnd)="addProducer($event)"
+                       [matChipInputAddOnBlur]="addOnBlur"
+                       [matChipInputFor]="producer"
+                       [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                       placeholder="New Producer"/>
+                <mat-error *ngIf="hasError('producer', 'required')">At least one is required</mat-error>
+            </mat-chip-list>
+        </mat-form-field>
+        <button (click)="close()"
+                color="warn"
+                mat-button
+                type="button">
+            CancelL
+        </button>
+        <button (click)="onSAveForm();
+                onSubmit($event)"
+                [disabled]="form.invalid"
+                color="primary"
+                mat-button>
+            Save
+        </button>
+
+    </form>
+</div>
