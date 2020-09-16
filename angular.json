@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "docs/",
+            "outputPath": "dist/homework5",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -125,7 +125,7 @@
           }
         },
         "deploy": {
-          "builder": "angular-cli-ghpages:deploy",
+          "builder": "@angular/fire:deploy",
           "options": {}
         }
       }

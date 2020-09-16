@@ -30,7 +30,6 @@ export class FormComponent implements OnInit {
             genre   : this.fb.array([], [Validators.required]),
             label   : this.fb.array([], [Validators.required]),
             producer: this.fb.array([], [Validators.required])
-
         });
     }
 
@@ -133,31 +132,25 @@ export class FormComponent implements OnInit {
 
     // remove by index
     removeLabel(index: number): void {
-        if (index >= 0) {
-            this.getLabel.removeAt(index);
-        }
+        this.getLabel.removeAt(index);
     }
 
     removeGenre(index: number): void {
-        if (index >= 0) {
-            this.getGenre.removeAt(index);
-        }
+        this.getGenre.removeAt(index);
     }
 
     removeProducer(index: number): void {
-        if (index >= 0) {
-            this.getProducer.removeAt(index);
-        }
+        this.getProducer.removeAt(index);
     }
 
     // check errors
     public hasError = (controlName: string, errorName: string) => {
         return this.form.controls[controlName].hasError(errorName);
-    };
+    }
 
     // save form if album not in collection add if it is edit
     onSAveForm() {
-        if (this.album.selected.id == null) {
+        if (this.album.selected.id === null) {
             const newAlbum = {
                 name    : this.getName.value,
                 band    : this.getBand.value,
