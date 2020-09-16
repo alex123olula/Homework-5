@@ -5,9 +5,13 @@
             <input #input (keyup)="applyFilter($event)" matInput>
         </mat-form-field>
     </div>
-    <table [dataSource]="dataSource" class="mat-elevation-z8" mat-table matSort>
+    <table [dataSource]="dataSource" class="mat-elevation-z8" mat-table>
+        <ng-container matColumnDef="new">
+            <th *matHeaderCellDef mat-header-cell>name</th>
+
+        </ng-container>
         <ng-container matColumnDef="name">
-            <th *matHeaderCellDef mat-header-cell mat-sort-header>name</th>
+            <th *matHeaderCellDef mat-header-cell>name</th>
             <td *matCellDef="let element" mat-cell> {{element.name}} </td>
         </ng-container>
         <ng-container matColumnDef="image">
@@ -17,17 +21,17 @@
             </td>
         </ng-container>
         <ng-container matColumnDef="abilities">
-            <th *matHeaderCellDef mat-header-cell mat-sort-header>abilities</th>
+            <th *matHeaderCellDef mat-header-cell >abilities</th>
             <td *matCellDef="let element" mat-cell>
                 {{element.abilities }}
             </td>
         </ng-container>
         <ng-container matColumnDef="weight">
-            <th *matHeaderCellDef mat-header-cell mat-sort-header>weight</th>
+            <th *matHeaderCellDef mat-header-cell>weight</th>
             <td *matCellDef="let element" mat-cell> {{element.weight}} </td>
         </ng-container>
         <ng-container matColumnDef="height">
-            <th *matHeaderCellDef mat-header-cell mat-sort-header>height</th>
+            <th *matHeaderCellDef mat-header-cell>height</th>
             <td *matCellDef="let element" mat-cell> {{element.height}} </td>
         </ng-container>
         <tr *matHeaderRowDef="displayedColumns" mat-header-row></tr>
