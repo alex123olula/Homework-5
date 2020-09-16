@@ -16,7 +16,7 @@ export class PokemonFirestoreService {
     public selectedPokemon = {
         id       : null,
         height   : null,
-        weight   : '',
+        weight   : null,
         image    : '',
         name     : '',
         abilities: []

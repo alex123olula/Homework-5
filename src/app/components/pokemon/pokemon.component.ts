@@ -96,7 +96,7 @@ export class PokemonComponent implements OnInit {
     // Reset form
     resetPokemonForm(): void {
         this.pokemonFirestoreService.selectedPokemon.name      = '';
-        this.pokemonFirestoreService.selectedPokemon.height    = '';
+        this.pokemonFirestoreService.selectedPokemon.height    = null;
         this.pokemonFirestoreService.selectedPokemon.image     = '';
         this.pokemonFirestoreService.selectedPokemon.abilities = [];
         this.pokemonFirestoreService.selectedPokemon.id        = null;
