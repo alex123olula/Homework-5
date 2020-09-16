@@ -10,7 +10,6 @@ import { AngularFireModule } from '@angular/fire';
 import { AlbumsService } from './services/albums.service';
 import { environment } from '../environments/environment';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
-import { ToolbarComponent } from './components/toolbar/toolbar.component';
 import { FormComponent } from './components/form/form.component';
 import {HttpClientModule } from '@angular/common/http';
 import { LayoutModule } from '@angular/cdk/layout';
@@ -32,16 +31,11 @@ import { PokemonFirestoreService } from './services/pokemon-firestore.service';
     declarations: [
         AppComponent,
         AlbumListComponent,
-        ToolbarComponent,
         FormComponent,
         PokemonComponent,
         PokemonComponent,
         PokemonAbilitiesPipe,
         PokemonFormComponent,
-
-
-
-
     ],
     imports        : [
         BrowserModule,
