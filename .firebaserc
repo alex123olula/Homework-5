@@ -7,5 +7,9 @@
         ]
       }
     }
+  },
+  "projects": {
+    "default": "homework-5-47019",
+    "homework5": "homework-5-47019"
   }
 }
