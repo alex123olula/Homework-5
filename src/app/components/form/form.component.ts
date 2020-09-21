@@ -88,7 +88,7 @@ export class FormComponent implements OnInit {
         // Add our requirement
         if ((valueLabel || '').trim()) {
 
-            this.getLabel.push(new FormControl(this.fb.control(valueLabel.trim())));
+            this.getLabel.push(this.fb.control(valueLabel.trim()));
         }
 
         // Reset the input value
